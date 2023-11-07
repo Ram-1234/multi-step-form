@@ -9,9 +9,9 @@ import {
   ScrollView,
   TextInput,
 } from "react-native";
-import FormField from "../input";
+
 import Button from "../button";
-import { formStyle, formFiledStyle, labelTextStyle } from "./helper";
+import { formStyle, formFiledStyle, labelTextStyle } from "./styles";
 import common from "../../config/common";
 import Error from "../error/Error";
 
@@ -49,7 +49,7 @@ const ScreenTwo = (props) => {
     watch,
     control,
     formState: { errors },
-  } = useForm({ resolver:yupResolver( validtaionSchema), defaultValues:state?.user_info });
+  } = useForm({ resolver: yupResolver(validtaionSchema), defaultValues: state?.user_info });
 
   const onSubmit = (data) => {
     nextStep(step, data)
@@ -92,7 +92,7 @@ const ScreenTwo = (props) => {
           )}
           name="firstname"
         />
-        {errors?.firstname && <Error title={errors?.firstname?.message}/>}
+        {errors?.firstname && <Error title={errors?.firstname?.message} />}
       </View>
       <View>
         <Text style={labelTextStyle}>LastName</Text>
@@ -109,7 +109,7 @@ const ScreenTwo = (props) => {
           )}
           name="lastname"
         />
-         {errors?.lastname && <Error title={errors?.lastname?.message}/>}
+        {errors?.lastname && <Error title={errors?.lastname?.message} />}
       </View>
       <View>
         <Text style={labelTextStyle}>Address</Text>
@@ -126,7 +126,7 @@ const ScreenTwo = (props) => {
           )}
           name="address"
         />
-         {errors?.address && <Error title={errors?.address?.message}/>}
+        {errors?.address && <Error title={errors?.address?.message} />}
       </View>
       <View style={{ float: 1, flexDirection: "row" }}>
         <Button title={"prev"} onClickHandler={prevPage} />

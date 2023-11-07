@@ -25,18 +25,17 @@ const reducer = (state, action) => {
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [modal,setModal]=useState(false);
+  const [modal, setModal] = useState(false);
   //console.log('state', state);
 
   /** next button clicked */
   const nextStep = (step, data) => {
-      if(step===3){
-        dispatch({type:"SAVE",payload:data})
-        setModal(true);
-      }else{
-      dispatch({type:"SAVE",payload:data})
+    dispatch({ type: "SAVE", payload: data })
+    if (step === 3) {
+      setModal(true);
+    } else {
       dispatch({ type: "NEXT", payload: step + 1 })
-      }
+    }
   }
   /** back button clicked */
   const backStep = (step, data) => {
@@ -46,13 +45,13 @@ function App() {
   }
   /** save button clicked */
   const saveButton = (step, data) => {
-    dispatch({type:"SAVE",payload:data})
-    if(step===3){
+    dispatch({ type: "SAVE", payload: data })
+    if (step === 3) {
       setModal(true);
     }
   }
 
-  const closeModal=()=>{
+  const closeModal = () => {
     setModal(false);
   }
 

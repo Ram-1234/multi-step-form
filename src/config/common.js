@@ -12,10 +12,6 @@ export default {
         length:50,
         regex:/\S+@\S+\.\S+|^$/
     },
-    code:{
-      length:10,
-      regex:/^[1-9][0-9]$/
-    },
     address: {
       min: 8,
       max: 100

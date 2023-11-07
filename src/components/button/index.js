@@ -2,6 +2,7 @@ import { Pressable, Text, View, StyleSheet } from "react-native";
 
 const Button = (props) => {
   const { title, onClickHandler, buttonStyle } = props;
+
   return (
     <Pressable onPress={onClickHandler} style={[styles.container, buttonStyle]}>
       <View>
@@ -13,12 +14,12 @@ const Button = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    flot:1,
-    width:"30%",
+    flot: 1,
+    width: "30%",
     backgroundColor: "#007FFF",
     paddingLeft: 5,
-    paddingBottom:10,
-    paddingTop:10,
+    paddingBottom: 10,
+    paddingTop: 10,
     margin: 5,
     marginTop: 20,
     justifyContent: "space-between",

@@ -9,18 +9,18 @@ import {
   ScrollView,
   TextInput,
 } from "react-native";
-// import FormField from "../input";
+
 import Button from "../button";
-import { formStyle, formFiledStyle, labelTextStyle } from "./helper";
+import { formStyle, formFiledStyle, labelTextStyle } from "./styles";
 import common from "../../config/common";
 import Error from "../error/Error";
 
 
 const validtaionSchema = yup.object().shape({
   email: yup
-  .string()
-  .email("must be a valid email")
-    .matches(/\S+@\S+\.\S+|^$/, {message: "must be a valid email"})
+    .string()
+    .email("must be a valid email")
+    .matches(/\S+@\S+\.\S+|^$/, { message: "must be a valid email" })
     .required("Please enter valid email"),
   password: yup.string()
     .matches(common.password.regex, {
@@ -32,13 +32,13 @@ const validtaionSchema = yup.object().shape({
 })
 
 const ScreenOne = (props) => {
-  const { step, nextStep, saveButton, backStep , state} = props;
+  const { step, nextStep, saveButton, backStep, state } = props;
   const {
     handleSubmit,
     watch,
     control,
     formState: { errors },
-  } = useForm({ resolver:yupResolver( validtaionSchema), defaultValues:state?.user_info });
+  } = useForm({ resolver: yupResolver(validtaionSchema), defaultValues: state?.user_info });
 
   const onSubmit = (data) => {
     nextStep(step, data)
@@ -63,9 +63,9 @@ const ScreenOne = (props) => {
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange,onBlur, value } }) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-            onBlur={onBlur}
+              onBlur={onBlur}
               required={true}
               type="email"
               errors={errors}
@@ -78,16 +78,16 @@ const ScreenOne = (props) => {
           )}
           name="email"
         />
-       {errors?.email && <Error title={errors?.email?.message||"Enter valid email"}/>}
+        {errors?.email && <Error title={errors?.email?.message || "Enter valid email"} />}
       </View>
       <View>
         <Text style={labelTextStyle}>Password</Text>
         <Controller
           control={control}
           rules={{ required: true }}
-          render={({ field: { onChange, onBlur,value } }) => (
+          render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
-            onBlur={onBlur}
+              onBlur={onBlur}
               onChangeText={onChange}
               value={value}
               style={formFiledStyle}
@@ -98,7 +98,7 @@ const ScreenOne = (props) => {
           )}
           name="password"
         />
-       {errors?.password && <Error title={errors?.password.message||'Enter strong password'} />}
+        {errors?.password && <Error title={errors?.password.message || 'Enter strong password'} />}
       </View>
       <View style={{ float: 1, flexDirection: "row" }}>
         <Button title={"prev"} disabled={true} buttonStyle={{ backgroundColor: "lightgrey" }} />

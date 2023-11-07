@@ -10,9 +10,10 @@ import {
   TextInput
 } from "react-native";
 import Checkbox from 'expo-checkbox';
-import Button from "../button";
-import { formStyle, formFiledStyle, labelTextStyle } from "./helper";
 import * as yup from "yup";
+
+import Button from "../button";
+import { formStyle, formFiledStyle, labelTextStyle } from "./styles";
 import common from "../../config/common";
 import Error from "../error/Error";
 
@@ -27,7 +28,8 @@ const validtaionSchema = yup.object().shape({
     .min(10)
     .max(10)
     .required("Phone number required"),
-  country_code: yup.string()
+  country_code: yup
+    .string()
     .required("Country code required")
 })
 
@@ -43,7 +45,6 @@ const ScreenThree = (props) => {
   } = useForm({ resolver: yupResolver(validtaionSchema), defaultValues: state?.user_info });
 
   const onSubmit = (data) => {
-    console.log('data', data)
     nextStep(step, data)
   }
 /**onClickHandler={saveData} */
