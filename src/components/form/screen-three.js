@@ -28,10 +28,6 @@ const validtaionSchema = yup.object().shape({
     .max(10)
     .required("Phone number required"),
   country_code: yup.string()
-    .matches(common.code.regex, {
-      message: "Must be a valid country code",
-      excludeEmptyString: true,
-    })
     .required("Country code required")
 })
 
@@ -47,9 +43,10 @@ const ScreenThree = (props) => {
   } = useForm({ resolver: yupResolver(validtaionSchema), defaultValues: state?.user_info });
 
   const onSubmit = (data) => {
+    console.log('data', data)
     nextStep(step, data)
   }
-
+/**onClickHandler={saveData} */
   const saveData = () => {
     let condition = watch('condition');
     let phone_number = watch('phone_number');
@@ -92,18 +89,11 @@ const ScreenThree = (props) => {
               onChange={item => {
               onChange(item.value);
               }}
-              
             />
-            // <TextInput
-            //   value={value}
-            //   style={formFiledStyle}
-            //   onChangeText={onChange}
-            //   placeholder="Your country code"
-            // />
           )}
           name="country_code"
         />
-        {/* {errors?.country_code && <Error title={errors?.country_code?.message} /> } */}
+        {errors?.country_code && <Error title={errors?.country_code?.message} /> }
       </View>
       <View>
         <Text style={labelTextStyle}>Phone Number</Text>
@@ -134,7 +124,6 @@ const ScreenThree = (props) => {
               onValueChange={onChange}
               style={styles.checkbox}
               value={value}
-              // onValueChange={toggleCheckBox}
               color={value ? '#007FFF' : undefined}
             />
           )}
@@ -145,7 +134,7 @@ const ScreenThree = (props) => {
 
       <View style={{ float: 1, flexDirection: "row" }}>
         <Button title={"prev"} onClickHandler={prevPage} />
-        <Button title={"save all"} onClickHandler={saveData} />
+        <Button title={"save all"}  onClickHandler={handleSubmit(onSubmit)} /> 
         <Button title={"save & next"} disabled={true} buttonStyle={{ backgroundColor: "lightgrey" }} onClickHandler={handleSubmit(onSubmit)} />
       </View>
     </ScrollView>

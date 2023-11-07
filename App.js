@@ -30,10 +30,13 @@ function App() {
 
   /** next button clicked */
   const nextStep = (step, data) => {
-    if (step <= 3) {
+      if(step===3){
+        dispatch({type:"SAVE",payload:data})
+        setModal(true);
+      }else{
       dispatch({type:"SAVE",payload:data})
       dispatch({ type: "NEXT", payload: step + 1 })
-    }
+      }
   }
   /** back button clicked */
   const backStep = (step, data) => {
