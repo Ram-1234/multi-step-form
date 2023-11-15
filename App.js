@@ -50,7 +50,7 @@ function App() {
       setModal(true);
     }
   }
-
+  /** close modal handler */
   const closeModal = () => {
     setModal(false);
   }

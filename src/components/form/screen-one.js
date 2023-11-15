@@ -20,7 +20,7 @@ const validtaionSchema = yup.object().shape({
   email: yup
     .string()
     .email("must be a valid email")
-    .matches(/\S+@\S+\.\S+|^$/, { message: "must be a valid email" })
+    .matches(common.email.regex, { message: "must be a valid email" })
     .required("Please enter valid email"),
   password: yup.string()
     .matches(common.password.regex, {
@@ -51,7 +51,6 @@ const ScreenOne = (props) => {
   }
 
   return (
-
     <ScrollView bounces={true} style={styles.scrollView}>
       <Text
         style={formStyle}

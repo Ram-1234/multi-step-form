@@ -50,18 +50,18 @@ const ScreenTwo = (props) => {
     control,
     formState: { errors },
   } = useForm({ resolver: yupResolver(validtaionSchema), defaultValues: state?.user_info });
-
+/**form submit hanlder */
   const onSubmit = (data) => {
     nextStep(step, data)
   }
-
+/**form save data handler */
   const saveData = () => {
     let firstname = watch('firstname');
     let lastname = watch('lastname');
     let address = watch('address');
     saveButton(step, { firstname: firstname, lastname: lastname, address: address });
   }
-
+/** previous page handler */
   const prevPage = () => {
     let firstname = watch('firstname');
     let lastname = watch('lastname');

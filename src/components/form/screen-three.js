@@ -43,7 +43,7 @@ const ScreenThree = (props) => {
     control,
     formState: { errors },
   } = useForm({ resolver: yupResolver(validtaionSchema), defaultValues: state?.user_info });
-
+/** form submit handler */
   const onSubmit = (data) => {
     nextStep(step, data)
   }
@@ -54,7 +54,7 @@ const ScreenThree = (props) => {
     let country_code = watch('country_code');
     saveButton(step, { condition: condition, phone_number: phone_number, country_code: country_code });
   }
-
+/**previous page handler */
   const prevPage = () => {
     let condition = watch('condition');
     let phone_number = watch('phone_number');
@@ -132,7 +132,6 @@ const ScreenThree = (props) => {
         />
         {errors?.condition && <Error title={errors?.condition?.message} />}
       </View>
-
       <View style={{ float: 1, flexDirection: "row" }}>
         <Button title={"prev"} onClickHandler={prevPage} />
         <Button title={"save all"}  onClickHandler={handleSubmit(onSubmit)} /> 
